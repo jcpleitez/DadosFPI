@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dados</title>
+    <style>
+    table {
+      width: 128x;
+      padding: 128px;
+      border: 5px solid gray;
+      margin: auto;
+    }
+    td, th {
+      text-align:center;
+    }
+    input {
+        font-size: 24px;
+    }
+
+    </style>
+  </head>
+  <body>
+
+    <table >
+      <tr>
+        <td>
+
+          <img src="" name="mydice">
+          <img src="" name="mydice2">
+
+          <br>
+          <br>
+          <input type="submit"  value="Lanzar" onclick="Lanzar()"/>
+          <br>
+          <br>
+          <label>Resuldado</label>
+          <input type="number" id="txtResultado" disabled/>
+        </td>
+      </tr>
+    </table>
+
+
+    <script type="text/javascript">
+    var face0=new Image();
+    face0.src="dados/dado1.png";
+    var face1=new Image();
+    face1.src="dados/dado2.png";
+    var face2=new Image();
+    face2.src="dados/dado3.png";
+    var face3=new Image();
+    face3.src="dados/dado4.png";
+    var face4=new Image();
+    face4.src="dados/dado5.png";
+    var face5=new Image();
+    face5.src="dados/dado6.png";
+    
+    document.onload = Lanzar();
+
+    function Lanzar() {
+      var numero1 = NumeroAleatorio();
+      var numero2 = NumeroAleatorio();
+
+      document.images["mydice"].src=eval("face"+(numero1-1)+".src");
+      document.images["mydice2"].src=eval("face"+(numero2-1)+".src");
+      
+      document.getElementById("txtResultado").value = (numero1+numero2);
+
+    }
+
+    function NumeroAleatorio() {
+      var numAleatorio = 0;
+      while (numAleatorio === 0) {
+        numAleatorio = Math.round((Math.random()*6));
+      }
+      return numAleatorio;
+    }
+
+    </script>
+  </body>
+</html>
